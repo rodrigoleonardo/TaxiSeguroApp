@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "edu.galileo.android.andridchat"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.TXT'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    //Para el listado que vamos a trabajar de contactos
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    /*1.- Librer'ia de materialDesign*
+    es importante notar que la versión de librería que estoy usando es de acuerdo a los "buildtools"
+    que tengo instalado. Tiene qué haber una sincronía entre lo que tengo instalado y
+    lo que estoy usando, por lo tanto, si tienen una versión diferente, recuerden actualizar
+    esto a su versión. LOS BuildTools se encuentran en la carpeta -> /home/rodrigo/Android/Sdk/build-tools/23.0.3
+     */
+    /*compile 'com.android.support:design:23.1.1'
+
+    compile 'com.firebase:firebase-client-android:2.5.0+'
+
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    compile 'de.greenrobot:eventbus:2.4.0'*/
+    compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+
+    compile "com.firebase:firebase-client-android:$rootProject.ext.firebaseClientVersion"
+    compile "de.hdodenhof:circleimageview:$rootProject.ext.circleImageViewVersion"
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    compile "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    compile "org.greenrobot:eventbus:$rootProject.ext.eventbusVersion"
+    //compile 'com.android.support:support-v4:23.4.0'
+}
+/*
+   NOTA: Todas estas librer'ias estan definidas en variables en el archivo Gradle del proyecto 'AndridChat'
+Biblioteca para utilizar componentes de Material Design
+*       compile 'com.android.support:design:23.1.1'
+*
+*BIblioteca de FireBase Agregar:
+*
+*       compile 'com.firebase:firebase-client-android:2.5.0+'
+*
+*       Adem'as de esto Agregar tambi'en:
+*       packagingOptions{
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/LICENSE-FIREBASE.TXT'
+            exclude 'META-INF/NOTICE'
+    }
+*Biblioteca para firebase
+*       compile 'com.jakewharton:butterknife:7.0.1'
+*
+*
+*Biblioteca EventBus, es para obtener devuelta los datos desde la fuente de datos a la vista View
+*Esta librer'ia es de propiedad de greenrobot
+*
+*   compile 'de.greenrobot:eventbus:2.4.0'
+*
+*
+*
+*
+    Vamos a agregar "circleImageView" para el manejo de imágenes de perfil.
+    Vamos a agregar "glide" para poder obtener imágenes, descargarlas del Internet.
+    Vamos a agregar también una modificación en "eventBus".
+    En vez de usar la versión "dos", "punto", "cuatro", "punto", "cero", vamos a usar la versión "tres", "punto", "cero",
+    que ya no está en "de", "punto", "greenrobot", sino está en "org", "punto", "greenrobot".
+*
+* */

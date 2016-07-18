@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.galileo.android.taxiseguro">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permiso para que tenga acceso a internet -->
+    <application
+        android:name="edu.galileo.android.taxiseguro.TaxiSeguroAndroidApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="edu.galileo.android.taxiseguro.login.ui.LoginTaxiServiceActivity">
+            <!--android:name=".login.ui.LoginTaxiServiceActivity"
+            android:noHistory="true"> android:noHistory="true", especifica que la actividad de login no tenga historia, de tal forma que cua do le de Back no regrese a esa actividad -->
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.galileo.android.taxiseguro.contacttaxiservicelist.ui.ContactTaxiServiceListActivity"
+            android:label="@string/contactlist.title"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="edu.galileo.android.taxiseguro.chattaxiservice.ui.ChatTaxiServiceActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.galileo.android.taxiseguro.contacttaxiservicelist.ui.ContactTaxiServiceListActivity" />
+            <!--pantalla signup es hija de la pantalla contactListACtivity-->
+        </activity>
+        <activity android:name="edu.galileo.android.taxiseguro.signup.ui.SignUpTaxiServiceActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.galileo.android.taxiseguro.login.ui.LoginTaxiServiceActivity" />
+            <!--pantalla signup es hija de la pantalla login-->
+        </activity>
+    </application>
+
+</manifest>
